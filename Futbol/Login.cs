@@ -1,4 +1,5 @@
 ﻿using Futbol.Database;
+using Futbol.Views;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -35,7 +36,12 @@ namespace Futbol
 
                     int count = Convert.ToInt32(cmd.ExecuteScalar());
                     if (count > 0)
-                        MessageBox.Show("Inicio de sesión exitoso!");
+                    {
+                        Form home = new ViewPartidos();
+                        home.Show();
+                        home.FormClosed += (s, args) => this.Close();
+                        this.Hide();
+                    }
                     else
                         MessageBox.Show("Usuario o contraseña incorrecto.");
                 }

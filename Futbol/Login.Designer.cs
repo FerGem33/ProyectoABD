@@ -84,9 +84,9 @@
             this.login_btn.ForeColor = System.Drawing.SystemColors.Control;
             this.login_btn.Location = new System.Drawing.Point(196, 256);
             this.login_btn.Name = "login_btn";
-            this.login_btn.Size = new System.Drawing.Size(139, 49);
+            this.login_btn.Size = new System.Drawing.Size(196, 49);
             this.login_btn.TabIndex = 4;
-            this.login_btn.Text = "Ingresar";
+            this.login_btn.Text = "Iniciar sesión";
             this.login_btn.UseVisualStyleBackColor = false;
             this.login_btn.Click += new System.EventHandler(this.login_btn_Click);
             // 
