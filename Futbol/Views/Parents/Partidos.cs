@@ -10,14 +10,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Futbol.Views
+namespace Futbol.Views.Parents
 {
-    public partial class ViewPartidos : Form
+    public partial class Partidos : UserControl
     {
-        public ViewPartidos()
+        public Partidos()
         {
             InitializeComponent();
             LoadData();
+            UpdateToSelectedRow(0);
         }
 
         private void LoadData()
@@ -26,7 +27,12 @@ namespace Futbol.Views
             {
                 conn.Open();
 
-                string sql = @"SELECT local.nombre AS Local, visitante.nombre AS Visitante, 
+                string sql = @"SELECT 
+                                p.idLocal   AS idLocal,
+                                p.idVisitante AS idVisitante,
+                                p.idEstadio AS idEstadio,
+                                p.idArbitro AS idArbitro,
+                               local.nombre AS Local, visitante.nombre AS Visitante, 
                                e.nombre AS Estadio, fecha AS Fecha, hora AS Hora, 
                                CONCAT(a.nombre, ' ', a.apellidoPaterno, ' ', a.apellidoMaterno) AS Arbitro
                                FROM partidos p
@@ -39,6 +45,11 @@ namespace Futbol.Views
                     var table = new DataTable();
                     adapter.Fill(table);
                     tablaPartidos.DataSource = table;
+
+                    tablaPartidos.Columns["idLocal"].Visible = false;
+                    tablaPartidos.Columns["idVisitante"].Visible = false;
+                    tablaPartidos.Columns["idEstadio"].Visible = false;
+                    tablaPartidos.Columns["idArbitro"].Visible = false;
                 }
 
                 sql = "SELECT idEquipo, nombre FROM equipos";
@@ -93,6 +104,26 @@ namespace Futbol.Views
 
             }
         }
+        private void UpdateToSelectedRow(int rowIndex)
+        {
+            if (rowIndex >= 0)
+            {
+                DataGridViewRow row = tablaPartidos.Rows[rowIndex];
 
+                comboLocal.SelectedValue = row.Cells["idLocal"].Value;
+                comboVisitante.SelectedValue = row.Cells["idVisitante"].Value;
+                comboEstadio.SelectedValue = row.Cells["idEstadio"].Value;
+                comboArbitro.SelectedValue = row.Cells["idArbitro"].Value;
+
+                datePicker.Value = Convert.ToDateTime(row.Cells["Fecha"].Value);
+                TimeSpan hora = TimeSpan.Parse(row.Cells["Hora"].Value.ToString());
+                timePicker.Value = datePicker.Value.Date + hora;
+            }
+        }
+
+        private void tablaPartidos_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            UpdateToSelectedRow(e.RowIndex);
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Futbol.Database;
 using Futbol.Views;
+using Futbol.Views.Parents;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,7 @@ namespace Futbol
             InitializeComponent();
         }
 
-        private void login_btn_Click(object sender, EventArgs e)
+        private void loginCredentials()
         {
             string username = textBox1.Text;
             string password = textBox2.Text;
@@ -45,6 +46,30 @@ namespace Futbol
                     else
                         MessageBox.Show("Usuario o contraseña incorrecto.");
                 }
+            }
+        }
+
+        private void login_btn_Click(object sender, EventArgs e)
+        {
+            loginCredentials();
+        }
+
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar.Equals(((char)Keys.Enter)))
+            {
+                loginCredentials();
+            }
+
+        }
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar.Equals(((char)Keys.Enter)))
+            {
+                Form home = new ViewPartidos();
+                home.Show();
+                home.FormClosed += (s, args) => this.Close();
+                this.Hide();
             }
         }
     }

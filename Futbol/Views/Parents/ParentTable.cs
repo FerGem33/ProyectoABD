@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Futbol.Views
 {
-    public partial class Form1 : Form
+    public partial class ParentTable : UserControl
     {
-        public Form1()
+        public ParentTable()
         {
             InitializeComponent();
         }
