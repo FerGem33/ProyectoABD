@@ -20,10 +20,24 @@ namespace Futbol.Views
 
         private void MainView_Load(object sender, EventArgs e)
         {
+        
+        }
+
+        private void LoadView(UserControl view)
+        {
             mainContainer.Controls.Clear();
-            var uc = new Partidos();
-            uc.Dock = DockStyle.Fill;
-            mainContainer.Controls.Add(uc);
+            view.Dock = DockStyle.Fill;
+            mainContainer.Controls.Add(view);
+        }
+
+        private void partidosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadView(new Partidos());
+        }
+
+        private void posicionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadView(new Posiciones());
         }
     }
 }

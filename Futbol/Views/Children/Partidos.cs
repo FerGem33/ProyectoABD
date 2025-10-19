@@ -10,11 +10,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Futbol.Views
+namespace Futbol.Views.Parents
 {
-    public partial class ViewPartidos : Form
+    public partial class Partidos : UserControl
     {
-        public ViewPartidos()
+        public Partidos()
         {
             InitializeComponent();
             LoadData();
@@ -46,14 +46,14 @@ namespace Futbol.Views
                 {
                     var table = new DataTable();
                     adapter.Fill(table);
-                    tablaPartidos.DataSource = table;
+                    dataGrid.DataSource = table;
 
-                    tablaPartidos.Columns["idPartido"].Visible = false;
-                    tablaPartidos.Columns["idLiga"].Visible = false;
-                    tablaPartidos.Columns["idLocal"].Visible = false;
-                    tablaPartidos.Columns["idVisitante"].Visible = false;
-                    tablaPartidos.Columns["idEstadio"].Visible = false;
-                    tablaPartidos.Columns["idArbitro"].Visible = false;
+                    dataGrid.Columns["idPartido"].Visible = false;
+                    dataGrid.Columns["idLiga"].Visible = false;
+                    dataGrid.Columns["idLocal"].Visible = false;
+                    dataGrid.Columns["idVisitante"].Visible = false;
+                    dataGrid.Columns["idEstadio"].Visible = false;
+                    dataGrid.Columns["idArbitro"].Visible = false;
                 }
 
                 sql = "SELECT idEquipo, nombre FROM equipos";
@@ -84,17 +84,6 @@ namespace Futbol.Views
                     comboEstadio.DisplayMember = "nombre";
                 }
 
-                sql = "SELECT idEstadio, nombre FROM estadios";
-                using (var adapter = new MySqlDataAdapter(sql, conn))
-                {
-                    var table = new DataTable();
-                    adapter.Fill(table);
-
-                    comboEstadio.DataSource = table;
-                    comboEstadio.ValueMember = "idEstadio";
-                    comboEstadio.DisplayMember = "nombre";
-                }
-
                 sql = "SELECT idArbitro, CONCAT(nombre, ' ', apellidoPaterno, ' ', apellidoMaterno) AS nombre FROM arbitros";
                 using (var adapter = new MySqlDataAdapter(sql, conn))
                 {
@@ -107,13 +96,16 @@ namespace Futbol.Views
                 }
 
             }
+
+            dataGrid.Columns["Arbitro"].FillWeight = 180; 
+            dataGrid.Columns["Hora"].FillWeight = 60;
         }
 
         private void UpdateTableToSelectedRow(int rowIndex)
         {
             if (rowIndex >= 0)
             {
-                DataGridViewRow row = tablaPartidos.Rows[rowIndex];
+                DataGridViewRow row = dataGrid.Rows[rowIndex];
 
                 comboLocal.SelectedValue = row.Cells["idLocal"].Value;
                 comboVisitante.SelectedValue = row.Cells["idVisitante"].Value;
@@ -125,25 +117,30 @@ namespace Futbol.Views
                 timePicker.Value = datePicker.Value.Date + hora;
             }
         }
+
         private void ReloadTable()
         {
             LoadData();
-            UpdateTableToSelectedRow(tablaPartidos.SelectedRows[0].Index);
+            UpdateTableToSelectedRow(dataGrid.SelectedRows[0].Index);
         }
 
-        private void tablaPartidos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void DataGrid_SelectionChanged(object sender, EventArgs e)
         {
-            UpdateTableToSelectedRow(e.RowIndex);
+            if (dataGrid.SelectedRows.Count > 0)
+            {
+                int rowIndex = dataGrid.SelectedRows[0].Index;
+                UpdateTableToSelectedRow(rowIndex);
+            }
         }
 
-        private void insertar_btn_Click(object sender, EventArgs e)
+        private void Insertar_btn_Click(object sender, EventArgs e)
         {
             using (var conn = Db.GetConnection())
             {
                 conn.Open();
                 int idLiga, idLocal, idVisitante, idEstadio, idArbitro;
 
-                idLiga = Convert.ToInt32(tablaPartidos.SelectedRows[0].Cells["idLiga"].Value);
+                idLiga = Convert.ToInt32(dataGrid.SelectedRows[0].Cells["idLiga"].Value);
                 idLocal = Convert.ToInt32(comboLocal.SelectedValue);
                 idVisitante = Convert.ToInt32(comboVisitante.SelectedValue);
                 idEstadio = Convert.ToInt32(comboEstadio.SelectedValue);
@@ -152,7 +149,7 @@ namespace Futbol.Views
                 DateTime fecha = datePicker.Value.Date;
                 TimeSpan hora = timePicker.Value.TimeOfDay;
 
-                var sql = @"INSERT INTO partidos (idEstadio, idLocal, idVisitante, idArbitro, idLiga, fecha, hora)
+                string sql = @"INSERT INTO partidos (idEstadio, idLocal, idVisitante, idArbitro, idLiga, fecha, hora)
                     VALUES (@estadio, @local, @visitante, @arbitro, @liga, @fecha, @hora)";
                 using (var cmd = new MySqlCommand(sql, conn))
                 {
@@ -163,7 +160,7 @@ namespace Futbol.Views
                     cmd.Parameters.Add("@liga", MySqlDbType.Int32).Value = idLiga;
                     cmd.Parameters.Add("@fecha", MySqlDbType.Date).Value = datePicker.Value.Date;
                     cmd.Parameters.Add("@hora", MySqlDbType.Time).Value = timePicker.Value.TimeOfDay;
-                   
+
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -171,15 +168,15 @@ namespace Futbol.Views
             ReloadTable();
         }
 
-        private void actualizar_btn_Click(object sender, EventArgs e)
+        private void Actualizar_btn_Click(object sender, EventArgs e)
         {
             using (var conn = Db.GetConnection())
             {
                 conn.Open();
                 int idPartido, idLiga, idLocal, idVisitante, idEstadio, idArbitro;
 
-                idPartido = Convert.ToInt32(tablaPartidos.SelectedRows[0].Cells["idPartido"].Value);
-                idLiga = Convert.ToInt32(tablaPartidos.SelectedRows[0].Cells["idLiga"].Value);
+                idPartido = Convert.ToInt32(dataGrid.SelectedRows[0].Cells["idPartido"].Value);
+                idLiga = Convert.ToInt32(dataGrid.SelectedRows[0].Cells["idLiga"].Value);
                 idLocal = Convert.ToInt32(comboLocal.SelectedValue);
                 idVisitante = Convert.ToInt32(comboVisitante.SelectedValue);
                 idEstadio = Convert.ToInt32(comboEstadio.SelectedValue);
@@ -188,7 +185,7 @@ namespace Futbol.Views
                 DateTime fecha = datePicker.Value.Date;
                 TimeSpan hora = timePicker.Value.TimeOfDay;
 
-                var sql = @"UPDATE partidos
+                string sql = @"UPDATE partidos
                           SET idEstadio = @estadio,
                               idLocal = @local,
                               idVisitante = @visitante,
@@ -216,14 +213,14 @@ namespace Futbol.Views
             ReloadTable();
         }
 
-        private void eliminar_btn_Click(object sender, EventArgs e)
+        private void Eliminar_btn_Click(object sender, EventArgs e)
         {
             using (var conn = Db.GetConnection())
             {
                 conn.Open();
-                int idPartido = Convert.ToInt32(tablaPartidos.SelectedRows[0].Cells["idPartido"].Value);
+                int idPartido = Convert.ToInt32(dataGrid.SelectedRows[0].Cells["idPartido"].Value);
 
-                var sql = "DELETE FROM partidos WHERE idPartido = @partido";
+                string sql = "DELETE FROM partidos WHERE idPartido = @partido";
                 using (var cmd = new MySqlCommand(sql, conn))
                 {
                     cmd.Parameters.Add("@partido", MySqlDbType.Int32).Value = idPartido;

@@ -38,7 +38,7 @@ namespace Futbol
                     int count = Convert.ToInt32(cmd.ExecuteScalar());
                     if (count > 0)
                     {
-                        Form home = new ViewPartidos();
+                        Form home = new MainView();
                         home.Show();
                         home.FormClosed += (s, args) => this.Close();
                         this.Hide();
@@ -66,7 +66,7 @@ namespace Futbol
         {
             if (e.KeyChar.Equals(((char)Keys.Enter)))
             {
-                Form home = new ViewPartidos();
+                Form home = new MainView();
                 home.Show();
                 home.FormClosed += (s, args) => this.Close();
                 this.Hide();

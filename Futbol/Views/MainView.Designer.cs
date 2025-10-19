@@ -66,6 +66,7 @@
             // 
             // mainContainer
             // 
+            this.mainContainer.BackColor = System.Drawing.Color.Linen;
             this.mainContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainContainer.Location = new System.Drawing.Point(0, 0);
             this.mainContainer.Name = "mainContainer";
@@ -74,6 +75,7 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.Color.Linen;
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
@@ -100,32 +102,33 @@
             // ligasToolStripMenuItem
             // 
             this.ligasToolStripMenuItem.Name = "ligasToolStripMenuItem";
-            this.ligasToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.ligasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ligasToolStripMenuItem.Text = "Ligas";
             // 
             // entrenadoresToolStripMenuItem
             // 
             this.entrenadoresToolStripMenuItem.Name = "entrenadoresToolStripMenuItem";
-            this.entrenadoresToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.entrenadoresToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.entrenadoresToolStripMenuItem.Text = "Entrenadores";
             // 
             // arbitrosToolStripMenuItem
             // 
             this.arbitrosToolStripMenuItem.Name = "arbitrosToolStripMenuItem";
-            this.arbitrosToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.arbitrosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.arbitrosToolStripMenuItem.Text = "Arbitros";
             // 
             // estadiosToolStripMenuItem
             // 
             this.estadiosToolStripMenuItem.Name = "estadiosToolStripMenuItem";
-            this.estadiosToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.estadiosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.estadiosToolStripMenuItem.Text = "Estadios";
             // 
             // posicionesToolStripMenuItem
             // 
             this.posicionesToolStripMenuItem.Name = "posicionesToolStripMenuItem";
-            this.posicionesToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.posicionesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.posicionesToolStripMenuItem.Text = "Posiciones";
+            this.posicionesToolStripMenuItem.Click += new System.EventHandler(this.posicionesToolStripMenuItem_Click);
             // 
             // jugadoresToolStripMenuItem
             // 
@@ -138,6 +141,7 @@
             this.partidosToolStripMenuItem.Name = "partidosToolStripMenuItem";
             this.partidosToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
             this.partidosToolStripMenuItem.Text = "Partidos";
+            this.partidosToolStripMenuItem.Click += new System.EventHandler(this.partidosToolStripMenuItem_Click);
             // 
             // MainView
             // 

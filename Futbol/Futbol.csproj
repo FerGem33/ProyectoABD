@@ -127,29 +127,29 @@
     <Compile Include="Views\MainView.Designer.cs">
       <DependentUpon>MainView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Parents\ParentTable.cs">
+    <Compile Include="Views\Children\Partidos.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\Parents\ParentTable.Designer.cs">
-      <DependentUpon>ParentTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Parents\Partidos.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Views\Parents\Partidos.Designer.cs">
+    <Compile Include="Views\Children\Partidos.Designer.cs">
       <DependentUpon>Partidos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\UserControlBooks.cs">
+    <Compile Include="Views\Parents\Posiciones.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\UserControlBooks.Designer.cs">
-      <DependentUpon>UserControlBooks.cs</DependentUpon>
+    <Compile Include="Views\Parents\Posiciones.Designer.cs">
+      <DependentUpon>Posiciones.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Parents\ViewPartidos.cs">
+    <Compile Include="Views\Parents\ViewEstadios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Parents\ViewPartidos.Designer.cs">
-      <DependentUpon>ViewPartidos.cs</DependentUpon>
+    <Compile Include="Views\Parents\ViewEstadios.Designer.cs">
+      <DependentUpon>ViewEstadios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Parents\ViewPosiciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Parents\ViewPosiciones.Designer.cs">
+      <DependentUpon>ViewPosiciones.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Views\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -166,14 +166,11 @@
     <EmbeddedResource Include="Views\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Parents\ParentTable.resx">
-      <DependentUpon>ParentTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\Parents\Partidos.resx">
+    <EmbeddedResource Include="Views\Children\Partidos.resx">
       <DependentUpon>Partidos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Parents\ViewPartidos.resx">
-      <DependentUpon>ViewPartidos.cs</DependentUpon>
+    <EmbeddedResource Include="Views\Parents\Posiciones.resx">
+      <DependentUpon>Posiciones.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -192,9 +189,7 @@
   <ItemGroup>
     <Compile Include="Database\Db.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Children\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Database\create_tables.sql" />
     <None Include="Database\populate_tables.sql" />
