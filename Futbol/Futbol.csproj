@@ -113,6 +113,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Views\Parents\Estadios.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Parents\Estadios.Designer.cs">
+      <DependentUpon>Estadios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Parents\Ligas.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Parents\Ligas.Designer.cs">
+      <DependentUpon>Ligas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Parents\ViewLigas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Parents\ViewLigas.Designer.cs">
+      <DependentUpon>ViewLigas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Login.cs">
       <SubType>Form</SubType>
     </Compile>

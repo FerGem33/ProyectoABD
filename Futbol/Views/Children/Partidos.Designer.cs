@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Futbol.Views.Parents
+namespace Futbol.Views.Children
 {
     partial class Partidos
     {
@@ -52,7 +52,10 @@ namespace Futbol.Views.Parents
             this.comboVisitante = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.comboLocal = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGrid
@@ -202,7 +205,7 @@ namespace Futbol.Views.Parents
             this.datePicker.CustomFormat = "";
             this.datePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.datePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.datePicker.Location = new System.Drawing.Point(529, 118);
+            this.datePicker.Location = new System.Drawing.Point(636, 118);
             this.datePicker.Name = "datePicker";
             this.datePicker.Size = new System.Drawing.Size(126, 26);
             this.datePicker.TabIndex = 24;
@@ -212,7 +215,7 @@ namespace Futbol.Views.Parents
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(525, 95);
+            this.label4.Location = new System.Drawing.Point(632, 95);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(59, 20);
             this.label4.TabIndex = 23;
@@ -222,7 +225,7 @@ namespace Futbol.Views.Parents
             // 
             this.comboEstadio.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboEstadio.FormattingEnabled = true;
-            this.comboEstadio.Location = new System.Drawing.Point(269, 118);
+            this.comboEstadio.Location = new System.Drawing.Point(376, 118);
             this.comboEstadio.Name = "comboEstadio";
             this.comboEstadio.Size = new System.Drawing.Size(226, 24);
             this.comboEstadio.TabIndex = 22;
@@ -232,7 +235,7 @@ namespace Futbol.Views.Parents
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(269, 95);
+            this.label3.Location = new System.Drawing.Point(376, 95);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(70, 20);
             this.label3.TabIndex = 21;
@@ -263,7 +266,7 @@ namespace Futbol.Views.Parents
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(22, 95);
+            this.label1.Location = new System.Drawing.Point(129, 95);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(113, 20);
             this.label1.TabIndex = 18;
@@ -274,16 +277,37 @@ namespace Futbol.Views.Parents
             this.comboLocal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboLocal.ForeColor = System.Drawing.SystemColors.WindowText;
             this.comboLocal.FormattingEnabled = true;
-            this.comboLocal.Location = new System.Drawing.Point(26, 118);
+            this.comboLocal.Location = new System.Drawing.Point(133, 118);
             this.comboLocal.Name = "comboLocal";
             this.comboLocal.Size = new System.Drawing.Size(210, 24);
             this.comboLocal.TabIndex = 17;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Black;
+            this.label7.Location = new System.Drawing.Point(22, 95);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(25, 20);
+            this.label7.TabIndex = 33;
+            this.label7.Text = "Id";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDown1.Location = new System.Drawing.Point(26, 118);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(51, 26);
+            this.numericUpDown1.TabIndex = 34;
             // 
             // Partidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Linen;
+            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.eliminar_btn);
             this.Controls.Add(this.actualizar_btn);
             this.Controls.Add(this.insertar_btn);
@@ -304,6 +328,7 @@ namespace Futbol.Views.Parents
             this.Name = "Partidos";
             this.Size = new System.Drawing.Size(992, 504);
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -327,5 +352,7 @@ namespace Futbol.Views.Parents
         private System.Windows.Forms.ComboBox comboVisitante;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboLocal;
+        private Label label7;
+        private NumericUpDown numericUpDown1;
     }
 }

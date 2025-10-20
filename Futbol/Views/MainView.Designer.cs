@@ -77,12 +77,14 @@
             // 
             this.menuStrip1.BackColor = System.Drawing.Color.Linen;
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
             this.jugadoresToolStripMenuItem,
             this.partidosToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.menuStrip1.Size = new System.Drawing.Size(992, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
@@ -104,6 +106,7 @@
             this.ligasToolStripMenuItem.Name = "ligasToolStripMenuItem";
             this.ligasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ligasToolStripMenuItem.Text = "Ligas";
+            this.ligasToolStripMenuItem.Click += new System.EventHandler(this.ligasToolStripMenuItem_Click);
             // 
             // entrenadoresToolStripMenuItem
             // 
@@ -122,6 +125,7 @@
             this.estadiosToolStripMenuItem.Name = "estadiosToolStripMenuItem";
             this.estadiosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.estadiosToolStripMenuItem.Text = "Estadios";
+            this.estadiosToolStripMenuItem.Click += new System.EventHandler(this.estadiosToolStripMenuItem_Click);
             // 
             // posicionesToolStripMenuItem
             // 
@@ -133,13 +137,13 @@
             // jugadoresToolStripMenuItem
             // 
             this.jugadoresToolStripMenuItem.Name = "jugadoresToolStripMenuItem";
-            this.jugadoresToolStripMenuItem.Size = new System.Drawing.Size(72, 20);
+            this.jugadoresToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
             this.jugadoresToolStripMenuItem.Text = "Jugadores";
             // 
             // partidosToolStripMenuItem
             // 
             this.partidosToolStripMenuItem.Name = "partidosToolStripMenuItem";
-            this.partidosToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
+            this.partidosToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
             this.partidosToolStripMenuItem.Text = "Partidos";
             this.partidosToolStripMenuItem.Click += new System.EventHandler(this.partidosToolStripMenuItem_Click);
             // 

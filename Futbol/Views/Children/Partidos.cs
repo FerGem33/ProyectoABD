@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Futbol.Views.Parents
+namespace Futbol.Views.Children
 {
     public partial class Partidos : UserControl
     {
@@ -42,19 +42,23 @@ namespace Futbol.Views.Parents
                                JOIN equipos visitante ON p.idVisitante = visitante.idEquipo
                                JOIN estadios e ON p.idEstadio = e.idEstadio
                                JOIN arbitros a ON p.idArbitro = a.idArbitro;";
+
                 using (var adapter = new MySqlDataAdapter(sql, conn))
                 {
                     var table = new DataTable();
                     adapter.Fill(table);
                     dataGrid.DataSource = table;
 
-                    dataGrid.Columns["idPartido"].Visible = false;
+                    dataGrid.Columns["idPartido"].Visible = true;
                     dataGrid.Columns["idLiga"].Visible = false;
                     dataGrid.Columns["idLocal"].Visible = false;
                     dataGrid.Columns["idVisitante"].Visible = false;
                     dataGrid.Columns["idEstadio"].Visible = false;
                     dataGrid.Columns["idArbitro"].Visible = false;
                 }
+
+                
+
 
                 sql = "SELECT idEquipo, nombre FROM equipos";
                 using (var adapter = new MySqlDataAdapter(sql, conn))
